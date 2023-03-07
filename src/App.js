@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [greenSquare, setGreenSquare] = useState(true);
+  const [redSquare, setRedSquare] = useState(false);
+
+  const handleGreenClick = () => {
+    setGreenSquare(false);
+    setRedSquare(true);
+  };
+
+  const handleRedClick = () => {
+    setGreenSquare(true);
+    setRedSquare(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='blue' />
+      {greenSquare && <div className='green'  onClick={handleGreenClick} />}
+      {redSquare && <div className='red' onClick={handleRedClick} />}
+    </>
   );
 }
 
