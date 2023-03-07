@@ -1,25 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function App() {
-  const [greenSquare, setGreenSquare] = useState(true);
-  const [redSquare, setRedSquare] = useState(false);
+  const [Square, setSquare] = useState("red");
 
-  const handleGreenClick = () => {
-    setGreenSquare(false);
-    setRedSquare(true);
-  };
-
-  const handleRedClick = () => {
-    setGreenSquare(true);
-    setRedSquare(false);
+  const handleClick = (color) => {
+    setSquare(color);
   };
 
   return (
-    <>
-      <div className='blue' />
-      {greenSquare && <div className='green'  onClick={handleGreenClick} />}
-      {redSquare && <div className='red' onClick={handleRedClick} />}
-    </>
+    <div>
+      {Square !== "green" && (
+        <div
+          className="green"
+          onClick={() => handleClick("green")}
+        ></div>
+      )}
+      {Square !== "red" && (
+        <div
+          className="red"
+          onClick={() => handleClick("red")}
+        ></div>
+      )}
+
+      {Square !== "blue" && (
+        <div
+        className="blue"
+        onClick={() => handleClick("blue")}
+      ></div>
+      )}
+    </div>
   );
 }
 
